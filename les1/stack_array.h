@@ -36,6 +36,7 @@ template<typename T, int Size>
 inline void StackArray<T, Size>::reset()
 {
   index = -1;
+  memset(arr, 0, Size * sizeof(T));
 }
 
 template<typename T, int Size>
