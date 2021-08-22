@@ -5,11 +5,6 @@
 class Power
 {
 public:
-  explicit Power(double base = 0.0, double power = 0.0) :
-    m_base{ base },
-    m_power{ power}
-  {}
-  
   void set(double base, double power)
   {
     m_base = base ;

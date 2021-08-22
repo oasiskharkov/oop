@@ -9,7 +9,8 @@ int main()
   Power p1;
   std::cout << p1.calculate() << std::endl;
 
-  Power p2(2.0, 3.0);
+  Power p2;
+  p2.set(2.0, 4.0);
   std::cout << p2.calculate() << std::endl;
 
   Power p3;
