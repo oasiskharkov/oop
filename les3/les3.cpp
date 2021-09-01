@@ -59,7 +59,7 @@ int main()
       f1 /= Fraction(4, 3);
       std::cout << f1 << std::endl;      // 63/240
       f1.normalize();
-      std::cout << f1 << std::endl;      // 21/80
+      std::cout << -f1 << std::endl;      // -21/80
 
       if (Fraction(1, 3) < Fraction(1, 2))
       {
