@@ -100,6 +100,16 @@ DynArray<T>::~DynArray()
 }
 
 template<typename T>
+T& DynArray<T>::operator [] (int index)
+{
+   if (index < 0 or index >= (int)m_size)
+   {
+      throw std::logic_error("Index is out of bounds.");
+   }
+   return m_data[size_t(index)];
+}
+
+template<typename T>
 void DynArray<T>::push_back(const T& value)
 {
    T* data = new T[m_size + 1];

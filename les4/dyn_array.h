@@ -18,6 +18,8 @@ public:
    DynArray& operator = (DynArray&& da);
    ~DynArray();
 
+   T& operator [] (int index);
+
    void push_back(const T& value);
    void pop_back();
    void push_front(const T& value);
@@ -26,8 +28,8 @@ public:
    void insert_after(int index, const T& value);
    void insert_before(int index, const T& value);
    void resize(int size);
-   void reverse();
-
+   void reverse();  
+ 
    T* front();
    T* back();
    bool empty() const;

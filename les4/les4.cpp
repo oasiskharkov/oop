@@ -45,6 +45,7 @@ int main()
    da.insert_before(6, 30);
    da.insert_before(2, 40);
    da.print();
+   std::cout << da[3] << std::endl;
    std::cout << da.size() << std::endl;
    da.clear();
    std::cout << da.size() << std::endl;
