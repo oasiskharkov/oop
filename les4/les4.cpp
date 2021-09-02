@@ -8,6 +8,12 @@
 
 constexpr int size = 50;
 
+DynArray<int> getEmptyDynArray()
+{
+   DynArray<int> da;
+   return da;
+}
+
 int main()
 {
    // ========== TASK #1 ==========
@@ -46,6 +52,14 @@ int main()
    {
       std::cout << "Dyn array is empty" << std::endl;
    }
+
+   DynArray<int> da1 = da;
+   da = getEmptyDynArray();
+   DynArray<int> da2(10);
+   DynArray<int> da3(5, 4);
+   da1 = da2 = da3;
+   da2 = DynArray<int>(3, 10);
+
 
    // ========== TASK #2 ==========
    std::random_device rd;

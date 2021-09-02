@@ -10,7 +10,7 @@ DynArray<T>::DynArray() :
 
 template<typename T>
 DynArray<T>::DynArray(int size) :
-   m_size{ size }
+   m_size{ (size_t)size }
 {
    if (size < 0)
    {
@@ -21,14 +21,14 @@ DynArray<T>::DynArray(int size) :
 
 template<typename T>
 DynArray<T>::DynArray(int size, const T& value) :
-   m_size{ size }
+   m_size{ (size_t)size }
 {
    if (size < 0)
    {
       throw std::logic_error("Incorrect array size.");
    }
    m_data = new T[m_size];
-   for (size_t i = 0; i < size; ++i)
+   for (size_t i = 0; i < m_size; ++i)
    {
       m_data[i] = value;
    }
@@ -49,7 +49,6 @@ DynArray<T>::DynArray(std::initializer_list<T> list) :
 template<typename T>
 DynArray<T>::DynArray(const DynArray& da)
 {
-
    m_size = da.m_size;
    m_data = new T[m_size];
    for (size_t i = 0; i < m_size; ++i)
@@ -79,7 +78,7 @@ DynArray<T>::DynArray(DynArray&& da)
 {
    m_size = da.m_size;
    m_data = da.m_data;
-   da.size = 0;
+   da.m_size = 0;
    da.m_data = nullptr;
 }
 
