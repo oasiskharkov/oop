@@ -1,7 +1,4 @@
-﻿#define _CRT_SECURE_NO_WARNINGS
-
-#include <iostream>
-#include <climits>
+﻿#include <iostream>
 #include <string>
 #include <sstream>
 
