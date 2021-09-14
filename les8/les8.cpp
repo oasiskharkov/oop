@@ -7,7 +7,7 @@
 int main()
 {
    // ========== TASK #1 ==========
-   /*try
+   try
    {
       int ai, bi; 
       ai = 10; 
@@ -26,10 +26,10 @@ int main()
    {
       std::cerr << dz.what() << std::endl;
       return EXIT_FAILURE;
-   }*/
+   }
 
    // ========== TASK #2 ==========
-   /*try
+   try
    {
       Bar b;
       int n;
@@ -44,7 +44,7 @@ int main()
    {
       std::cerr << ex.what() << std::endl;
       return EXIT_FAILURE;
-   }*/
+   }
    
    // ========== TASK #3 ==========
    try
