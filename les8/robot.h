@@ -41,25 +41,25 @@ public:
    virtual void move(Robot& r) const = 0;
 };
 
-class Up : public IMovable
+class Up final: public IMovable
 {
 public:
    void move(Robot& r) const override;
 };
 
-class Down : public IMovable
+class Down final : public IMovable
 {
 public:
    void move(Robot& r) const override;
 };
 
-class Left : public IMovable
+class Left final : public IMovable
 {
 public:
    void move(Robot& r) const override;
 };
 
-class Right : public IMovable
+class Right final: public IMovable
 {
 public:
    void move(Robot& r) const override;

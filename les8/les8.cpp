@@ -52,7 +52,7 @@ int main()
       Robot robot(1, 1);
       robot.draw();
       char choice = '0';
-      while(true)
+      do
       {
          int dir_x;
          int dir_y;

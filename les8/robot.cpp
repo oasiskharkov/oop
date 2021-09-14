@@ -26,29 +26,29 @@ const char* IllegalCommand::what() const
 
 void Up::move(Robot& r) const
 {
-   int x = r.getX() - 1;
-   int y = r.getY();
-   r.setXY(x, y);
-}
-
-void Down::move(Robot& r) const
-{
-   int x = r.getX() + 1;
-   int y = r.getY();
-   r.setXY(x, y);
-}
-
-void Left::move(Robot& r) const
-{
    int x = r.getX();
    int y = r.getY() - 1;
    r.setXY(x, y);
 }
 
-void Right::move(Robot& r) const
+void Down::move(Robot& r) const
 {
    int x = r.getX();
    int y = r.getY() + 1;
+   r.setXY(x, y);
+}
+
+void Left::move(Robot& r) const
+{
+   int x = r.getX() - 1;
+   int y = r.getY();
+   r.setXY(x, y);
+}
+
+void Right::move(Robot& r) const
+{
+   int x = r.getX() + 1;
+   int y = r.getY();
    r.setXY(x, y);
 }
 
@@ -62,10 +62,10 @@ Robot::Robot(int x, int y) :
    }
    memset(m_field, 'O', size * size);
    m_field[y - 1][x - 1] = 'X';
-   m_dirs.emplace(std::pair<int, int>(0, 1), std::make_unique<Right>());
-   m_dirs.emplace(std::pair<int, int>(0, -1), std::make_unique<Left>());
-   m_dirs.emplace(std::pair<int, int>(-1, 0), std::make_unique<Up>());
-   m_dirs.emplace(std::pair<int, int>(1, 0), std::make_unique<Down>());
+   m_dirs.emplace(std::pair<int, int>(1, 0), std::make_unique<Right>());
+   m_dirs.emplace(std::pair<int, int>(-1, 0), std::make_unique<Left>());
+   m_dirs.emplace(std::pair<int, int>(0, -1), std::make_unique<Up>());
+   m_dirs.emplace(std::pair<int, int>(0, 1), std::make_unique<Down>());
 }
 
 void Robot::move(int x_dir, int y_dir)
