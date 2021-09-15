@@ -2,7 +2,7 @@
 #include "div.h"
 #include "exbar.h"
 #include "robot.h"
-#include "conio.h"
+#include "utils.h"
 
 int main()
 {
@@ -40,6 +40,7 @@ int main()
          b.set(n);
       } while (n != 0);
    }
+    
    catch (const Ex& ex)
    {
       std::cerr << ex.what() << std::endl;
@@ -58,14 +59,12 @@ int main()
          int dir_y;
          std::cout << "\nThe robot can only walk horizontally or vertically!" << std::endl;
          std::cout << "Directions(x, y): right(1, 0), left(-1, 0), down(0, 1), up(0, -1)" << std::endl;
-         std::cout << "Input x direction: ";
-         std::cin >> dir_x;
-         std::cout << "Input y direction: ";
-         std::cin >> dir_y;
+         std::cout << "Input direction (x, y): ";
+         std::cin >> dir_x >> dir_y;
          robot.move(dir_x, dir_y);
          robot.draw();
          std::cout << "Press 'y' button if you want to exit or other key to continue: ";
-         choice = _getch();
+         choice = Utils::getch();
       } while (choice != 'y' and choice != 'Y');
    }
    catch (const IllegalCommand& ic)
@@ -79,6 +78,5 @@ int main()
       return EXIT_FAILURE;
    }
 
-  
    return EXIT_SUCCESS;
 }

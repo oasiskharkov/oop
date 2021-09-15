@@ -1,4 +1,5 @@
 #include "robot.h"
+#include "utils.h"
 
 OffTheField::OffTheField(const int x, const int y) :
    m_x{x},
@@ -79,7 +80,7 @@ void Robot::move(int x_dir, int y_dir)
 
 void Robot::draw() const
 {
-   system("cls");
+   Utils::clearScreen();
    for(size_t i = 0; i < size; ++i)
    {
       for (size_t j = 0; j < size; ++j)
