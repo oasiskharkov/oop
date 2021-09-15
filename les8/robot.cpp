@@ -4,7 +4,7 @@
 OffTheField::OffTheField(const int x, const int y) :
    m_x{x},
    m_y{y},
-   m_error{std::string("Robot coordinates are out of field: x=") + std::to_string(x) + ", y=" + std::to_string(y)}
+   m_error{std::string("\nRobot coordinates are out of field: x=") + std::to_string(x) + ", y=" + std::to_string(y)}
 {
 
 }
@@ -14,10 +14,8 @@ const char* OffTheField::what() const
    return m_error.c_str();
 }
 
-IllegalCommand::IllegalCommand(const int x, const int y) :
-   m_x{x},
-   m_y{y},
-   m_error{std::string("Illegal robot direction: x=") + std::to_string(x) + ", y=" + std::to_string(y)}
+IllegalCommand::IllegalCommand(char key) :
+m_error {std::string("\nIllegal command, pressed key '") + key + "'"}
 {}
 
 const char* IllegalCommand::what() const
@@ -63,19 +61,19 @@ Robot::Robot(int x, int y) :
    }
    memset(m_field, 'O', size * size);
    m_field[y - 1][x - 1] = 'X';
-   m_dirs.emplace(std::pair<int, int>(1, 0), std::make_unique<Right>());
-   m_dirs.emplace(std::pair<int, int>(-1, 0), std::make_unique<Left>());
-   m_dirs.emplace(std::pair<int, int>(0, -1), std::make_unique<Up>());
-   m_dirs.emplace(std::pair<int, int>(0, 1), std::make_unique<Down>());
+   m_dirs.emplace('d', std::make_unique<Right>());
+   m_dirs.emplace('a', std::make_unique<Left>());
+   m_dirs.emplace('w', std::make_unique<Up>());
+   m_dirs.emplace('s', std::make_unique<Down>());
 }
 
-void Robot::move(int x_dir, int y_dir)
+void Robot::move(char key)
 {
-   if (m_dirs.find(std::pair<int, int>(x_dir, y_dir)) == m_dirs.end())
+   if (m_dirs.find(key) == m_dirs.end())
    {
-      throw IllegalCommand(x_dir, y_dir);
+      throw IllegalCommand(key);
    }
-   m_dirs.at(std::pair<int, int>(x_dir, y_dir))->move(*this);
+   m_dirs.at(key)->move(*this);
 }
 
 void Robot::draw() const

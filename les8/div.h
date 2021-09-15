@@ -20,7 +20,7 @@ private:
 };
 
 template <typename T>
-T division(T numerator, T devisor)
+T division(const T& numerator, const T& devisor)
 {
    if (devisor == 0)
    {

@@ -52,20 +52,19 @@ int main()
    {
       Robot robot(1, 1);
       robot.draw();
-      char choice = '0';
-      do
+      char choice;
+      while(true)
       {
-         int dir_x;
-         int dir_y;
          std::cout << "\nThe robot can only walk horizontally or vertically!" << std::endl;
-         std::cout << "Directions(x, y): right(1, 0), left(-1, 0), down(0, 1), up(0, -1)" << std::endl;
-         std::cout << "Input direction (x, y): ";
-         std::cin >> dir_x >> dir_y;
-         robot.move(dir_x, dir_y);
+         std::cout << "Press: 'w' to move up, 's' to move down, 'd' to move right, 'a' to move left, or 'x' to exit: ";
+         choice = std::tolower(Utils::getch());
+         if (choice == 'x')
+         {
+            break;
+         }
+         robot.move(choice);
          robot.draw();
-         std::cout << "Press 'y' button if you want to exit or other key to continue: ";
-         choice = Utils::getch();
-      } while (choice != 'y' and choice != 'Y');
+      }
    }
    catch (const IllegalCommand& ic)
    {

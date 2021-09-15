@@ -2,7 +2,7 @@
 
 #include <exception>
 #include <string>
-#include <map>
+#include <unordered_map>
 #include <memory>
 #include <iostream>
 
@@ -25,11 +25,9 @@ private:
 class IllegalCommand : public std::exception
 {
 public:
-   IllegalCommand(const int x, const int y);
+   IllegalCommand(char key);
    const char* what() const override;
 private:
-   int m_x;
-   int m_y;
    std::string m_error;
 };
 
@@ -69,7 +67,7 @@ class Robot
 {
 public:
    Robot(int x, int y);
-   void move(int x, int y);
+   void move(char key);
    void draw() const;
    void setXY(int x_dir, int y_dir);
    int getX() const;
@@ -77,6 +75,6 @@ public:
 private:
    int m_x;
    int m_y;
-   std::map<std::pair<int, int>, std::unique_ptr<IMovable>> m_dirs;
+   std::unordered_map<char, std::unique_ptr<IMovable>> m_dirs;
    char m_field[size][size];
 };
