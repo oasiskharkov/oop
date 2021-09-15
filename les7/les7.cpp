@@ -60,7 +60,12 @@ int main()
 
 std::unique_ptr<Date> compare(const std::unique_ptr<Date>& d1, const std::unique_ptr<Date>& d2)
 {
-   int result = strcmp(d1->to_string().c_str(), d2->to_string().c_str());
+   char date1[11];
+   sprintf_s(date1, "%04d.%02d.%02d", d1->year(), d1->month(), d1->day());
+   char date2[11];
+   sprintf_s(date2, "%04d.%02d.%02d", d2->year(), d2->month(), d2->day());
+
+   int result = strcmp(date1, date2);
    if (result >= 0)
    {
       return std::make_unique<Date>(*d1);
