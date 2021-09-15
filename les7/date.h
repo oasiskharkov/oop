@@ -10,6 +10,12 @@ public:
       m_month{month},
       m_year{year}
    {}
+   Date(const Date& d)
+   {
+      m_day = d.day();
+      m_month = d.month();
+      m_year = d.year();
+   }
    int day() const;
    int month() const;
    int year() const;

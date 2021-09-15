@@ -63,9 +63,9 @@ std::unique_ptr<Date> compare(const std::unique_ptr<Date>& d1, const std::unique
    int result = strcmp(d1->to_string().c_str(), d2->to_string().c_str());
    if (result >= 0)
    {
-      return std::make_unique<Date>(d1->day(), d1->month(), d1->year());
+      return std::make_unique<Date>(*d1);
    }
-   return std::make_unique<Date>(d2->day(), d2->month(), d2->year());
+   return std::make_unique<Date>(*d2);
 }
 
 void swap_uniques(std::unique_ptr<Date>& d1, std::unique_ptr<Date>& d2)
